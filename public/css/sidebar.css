@@ -1,0 +1,187 @@
+:root {
+    --page-bkg:transparent;
+    --dropdown-bkg:transparent;
+    --dropdown-main-item-bkg:black;
+    --accent-color: #2d68ff;
+
+    --text-color: #fff;
+    --font-size: 1rem;
+    --field: 0.5rem;
+
+    --item-opacity: 0.4;
+
+    --time: 0.2s;
+}
+
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: -225deg;
+    inherits: false;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: dark;
+}
+
+body {
+    display: grid;
+    align-items: start;
+    height: 100dvh;
+    padding-block-start: 15dvh;
+    font-size: var(--font-size);
+    line-height: 1.5;
+    font-family: system-ui, sans-serif;
+    color: var(--text-color);
+    background-color: var(--page-bkg);
+}
+
+a {
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    color: inherit;
+    font: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.dropdown-wrapper {
+    position: relative;
+
+    min-inline-size: calc(100% + 2rem);
+    padding: var(--field);
+    border-radius: 0.6rem;
+    background-color: var(--dropdown-bkg);
+
+    &::after {
+        --animation-name: none;
+
+        content: "";
+        position: absolute;
+        inset: -2px -2px 0 0;
+        z-index: -1;
+        opacity: 0;
+        border-radius: inherit;
+        background-image: conic-gradient(from var(--gradient-angle),
+                transparent 50%,
+                var(--accent-color),
+                transparent 60%);
+        animation-name: var(--animation-name);
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        transition: opacity 0;
+    }
+}
+
+.dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    inline-size: 100%;
+    padding: var(--field);
+    border-radius: inherit;
+    background-color: var(--dropdown-main-item-bkg);
+    transition: margin var(--time);
+
+    &::after {
+        content: "";
+        inline-size: 1ch;
+        aspect-ratio: 1/1;
+        border-inline-end: 2px solid currentColor;
+        border-block-end: 2px solid currentColor;
+        rotate: 45deg;
+        transition: border-color var(--time);
+    }
+}
+
+.dropdown-list {
+    display: grid;
+    grid-auto-rows: 0fr;
+    overflow: hidden;
+    border-radius: inherit;
+    transition-property: gap, grid;
+    transition-duration: var(--time);
+    transition-timing-function: cubic-bezier(0.52, 1.67, 0.59, 0.48);
+}
+
+.dropdown-list__item {
+    overflow: hidden;
+    padding-inline: var(--field);
+    border-radius: inherit;
+    background-color: color(from var(--dropdown-main-item-bkg) srgb r g b / var(--item-opacity));
+    opacity: 0;
+    visibility: hidden;
+    transition-property: background-color, padding, opacity;
+    transition-duration: var(--time);
+
+    &:hover,
+    &:focus-visible {
+        --item-opacity: 0.7;
+        outline-offset: -1px;
+    }
+}
+
+._open {
+    &.dropdown-wrapper {
+        &::after {
+            --animation-name: shine;
+            opacity: 1;
+            transition: opacity 0.2s;
+        }
+    }
+
+    & .dropdown {
+        margin-block-end: var(--field);
+
+        &::after {
+            border-color: var(--accent-color);
+            rotate: -135deg;
+        }
+    }
+
+    & .dropdown-list {
+        grid-auto-rows: 1fr;
+        gap: var(--field);
+    }
+
+    & .dropdown-list__item {
+        padding-block: var(--field);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes shine {
+    to {
+        --gradient-angle: 0deg;
+    }
+}
+
+.credits {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    font-size: 1rem;
+
+    & a {
+        color: inherit;
+    }
+}
+
+.button-container {
+    display: flex;
+    
+}

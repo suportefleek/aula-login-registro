@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+background: linear-gradient(-45deg, #a51b0b,  #d11507, #ff0000, #ff5232);
+background-size: 400% 400%;
+animation: gradient 15s ease infinite;
+height: 100vh;
+}
+@keyframes gradient {
+0% {
+  background-position: 0% 50%;
+}
+50% {
+  background-position: 100% 50%;
+}
+100% {
+  background-position: 0% 50%;
+}
+}
+.wrapper {
+  height: 500px;
+  display: flex;
+  min-width: 500px;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: -55px;
+}
+.icon-frame {
+  position: relative;
+  height: 70px;
+  width: 70px;
+  margin: 0 5px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  background: #fff;
+}
+.icon-frame .icon-pic img {
+  position: absolute;
+  height: 95%;
+  width: 95%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #0396ff;
+}
+.icon-frame::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 50%;
+  top: -50px;
+  transform: translateX(-50%);
+}
+.icon-frame .hover-pic {
+  position: absolute;
+  height: 350px;
+  width: 300px;
+  bottom: 100px;
+  left: 50%;
+  z-index: 0;
+  transform: translateX(-50%);
+  border-radius: 25px;
+  pointer-events: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.5s ease, z-index 0s, left 0.5s ease;
+  transition-delay: 0s, 0.5s, 0.5s;
+}
+.icon-frame:hover .hover-pic {
+  left: -200px;
+  z-index: 12;
+  transform: translateX(80px);
+  transition: left 0.5s ease, z-index 0s, transform 0.5s ease;
+  transition-delay: 0s, 0.5s, 0.5s;
+}
+.hover-pic img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  border-radius: 25px;
+}
+.hover-pic .content {
+  position: absolute;
+  width: 100%;
+  bottom: -10px;
+  padding: 0 10px;
+}
+.content::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: #fff;
+  left: 50%;
+  bottom: -7px;
+  transform: rotate(45deg) translateX(-50%);
+  z-index: -1;
+}
+.content .details {
+  position: relative;
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+.icon-frame:hover .details {
+  transition: all 0.5s ease;
+  transition-delay: 0.9s;
+  opacity: 1;
+  transform: translateY(4px);
+  pointer-events: auto;
+}
+.details::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: #fff;
+  left: 50%;
+  bottom: -15px;
+  transform: rotate(45deg) translateX(-50%);
+  z-index: -1;
+}
+.content .details .name {
+  font-size: 20px;
+  font-weight: 500;
+}
+.content .details .job {
+  font-size: 17px;
+  color: #0396ff;
+  margin: -3px 0 5px 0;
+}
+.content .details a:hover {
+  color: #0396ff;
+}
+.wrapper .last .hover-pic {
+  transition: none;
+}
+.wrapper .last:hover .hover-pic {
+  transition: 0;
+}
+.last:hover .details {
+  transition-delay: 0s;
+}
+.menu a {
+  display: block;
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+  color: grey;
+  transition: all 0.3s linear;
+  text-decoration: none;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s linear;
+  transform: translate(-100%);
+}
+
+.show-sidebar {
+  transform: translate(0);
+}
+
+.fa-bars {
+  position: fixed;
+  top: 2rem;
+  right: 3rem;
+  color: #e94949;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.fa-bars:hover {
+  color: black;
+}
+
+.fa-times {
+  font-size: 1.5rem;
+  color: #e94949;
+  cursor: pointer;
+}
+
+.fa-times:hover {
+  color: black;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.logo {
+  margin-left: -15px;
+}
+
+@media (min-width: 676px) {
+  .sidebar {
+    width: 500px;
+  }
+}
+
+.menu a:hover {
+  background: #f8a5a5;
+  padding-left: 1.7rem;
+}

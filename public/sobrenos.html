@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>NOSSO CURSO</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/contatos.css">
+    <link rel="stylesheet" href="css/sobrenos.css">
+  </head>
+  
+  <body>
+    <nav>
+        <a href="/" target="_blank" class="botao-1">HOME</a>
+        <a href="/contatos" target="_blank" class="botao-2">CONTATOS</a>
+        <a href="/galeria" target="_blank" class="botao-3">GALERIA</a>
+        <a href="cursos.html" target="_blank" class="botao-4">CURSOS</a>
+    </nav>
+    <div class="wrapper">
+      <div class="icon-frame">
+        <div class="icon-pic">
+          <img src="images/aula gratis.jpeg" alt="" />
+        </div>
+        <div class="hover-pic one">
+          <div class="img">
+            <img src="images/aula gratis.jpeg" alt="" />
+          </div>
+          <div class="content">
+            <div class="details">
+              <div class="name"></div>
+              <div class="job"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="icon-frame">
+        <div class="icon-pic">
+          <img src="images/megafone.jpeg" alt="" />
+        </div>
+        <div class="hover-pic one">
+          <div class="img">
+            <img src="images/megafone.jpeg" alt="" />
+          </div>
+          <div class="content">
+            <div class="details">
+              <div class="name"></div>
+              <div class="job"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="icon-frame">
+        <div class="icon-pic">
+          <img src="images/instagram.jpeg" alt="" />
+        </div>
+        <div class="hover-pic one">
+          <div class="img">
+            <img src="images/instagram.jpeg" alt="" />
+          </div>
+          <div class="content">
+            <div class="details">
+              <div class="name"></div>
+              <div class="job"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="icon-frame">
+        <div class="icon-pic">
+          <img src="images/explorar.jpeg" alt="" />
+        </div>
+        <div class="hover-pic one">
+          <div class="img">
+            <img src="images/explorar.jpeg"  alt="" />
+          </div>
+          <div class="content">
+            <div class="details">
+              <div class="name"></div>
+              <div class="job"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="icon-frame">
+        <div class="icon-pic">
+          <img src="images/futuro.jpeg" alt="" />
+        </div>
+        <div class="hover-pic one">
+          <div class="img">
+            <img src="images/futuro.jpeg" alt="" />
+          </div>
+          <div class="content">
+            <div class="details">
+              <div class="name"></div>
+              <div class="job"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="icon-frame last">
+        <div class="icon-pic">
+          <img src="images/modo-on.jpeg" alt="" />
+        </div>
+        <div class="hover-pic one">
+          <div class="img">
+            <img src="images/modo-on.jpeg" alt="" />
+          </div>
+          <div class="content">
+            <div class="details">
+              <div class="name"></div>
+              <div class="job"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+        <button onclick="toggleSubmenu(1)">Botão Principal 1</button>
+        <div id="submenu-1" class="submenu">
+            <button>Botão Secundário 1.1</button>
+            <button>Botão Secundário 1.2</button>
+            <button>Botão Secundário 1.3</button>
+        </div>
+        <button onclick="toggleSubmenu(2)">Botão Principal 2</button>
+        <div id="submenu-2" class="submenu">
+            <button>Botão Secundário 2.1</button>
+            <button>Botão Secundário 2.2</button>
+            <button>Botão Secundário 2.3</button>
+        </div>
+        <button onclick="toggleSubmenu(3)">Botão Principal 3</button>
+        <div id="submenu-3" class="submenu">
+            <button>Botão Secundário 3.1</button>
+            <button>Botão Secundário 3.2</button>
+            <button>Botão Secundário 3.3</button>
+        </div>
+    </div>
+
+    <script >const frames = document.querySelectorAll(".icon-frame");
+      function moveImage(e) {
+        const images = document.querySelectorAll(".hover-pic");
+        e.target.matches(".next") && frames[0].append(images[0]);
+        e.target.matches(".prev") &&
+          frames[frames.length - 1].prepend(images[images.length - 1]);
+      }
+      document.addEventListener("click", moveImage, false);</script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/sobrenos.js"></script>
+  </body>
+</html>
